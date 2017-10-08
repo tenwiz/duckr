@@ -1,4 +1,4 @@
-／users
+/users
   uid
     name
     uid
