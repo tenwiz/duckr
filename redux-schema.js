@@ -3,7 +3,7 @@
     isAuthed,
     isFetching,
     error,
-    autheId,
+    authedId,
     [uid]: {
       lastUpdated,
       info: {
@@ -16,7 +16,7 @@
   modal: {
     duck,
     isOpen
-  }
+  },
   ducks: {
     [duckId]: {
       lastUpdated,
