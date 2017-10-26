@@ -18,6 +18,8 @@
     isOpen
   },
   ducks: {
+    isFetching,
+    error,
     [duckId]: {
       lastUpdated,
       info: {
@@ -42,7 +44,7 @@
     }
   },
   usersLikes: {
-    duckid: true,
+    [duckid]: true,
   },
   feed: {
     isFetching,
@@ -62,7 +64,8 @@
           reply,
           uid,
           timestamp,
-          avatar
+          avatar,
+          replyId
         }
       }
     }

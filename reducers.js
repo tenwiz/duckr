@@ -71,3 +71,46 @@ export default function users(state = initialState, action) {
       return state
   }
 }
+
+// Ducks
+const initialState = {
+  isFetching: true,
+  error: ''
+}
+
+export default function ducks(state = initialState, action) {
+  switch (action.type) {
+    case FETCHING_DUCK:
+      return {
+        ...state,
+        isFetching: true,
+      }
+    case ADD_DUCK:
+    case FETCHING_DUCK_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: '',
+        [action.duck.duckId]: action.duck
+      }
+    case FETCHING_DUCK_ERROR:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error,
+      }
+    case REMOVE_FETCHING:
+      return {
+        ...state,
+        isFetching: false,
+        error: ''
+      }
+    case ADD_MUTIPLE_DUCKS:
+      return {
+        ...state,
+        ...action.ducks
+      }
+    default:
+      return state
+  }
+}
