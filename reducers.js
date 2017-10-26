@@ -114,3 +114,52 @@ export default function ducks(state = initialState, action) {
       return state
   }
 }
+
+// Feed
+
+const initialState = {
+  isFetching: false,
+  error: '',
+  newDucksAvailable: false,
+  duckIdsToAdd: [],
+  duckIds: []
+}
+
+export default function feed(state = initialState, action) {
+  switch (action.type) {
+    case SETTING_FEED_LISTENER:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case SETTING_FEED_LISTENER_ERROR:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
+      }
+    case SETTING_FEED_LISTENER_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
+        error: '',
+        duckIds: action.duckIds,
+        newDucksAvailable: false
+      }
+    case ADD_NEW_DUCK_ID_TO_FEED:
+      return {
+        ...state,
+        newDucksAvailable: true,
+        newDucksToAdd: [action.duckId, ...state.newDucksToAdd],
+      }
+    case RESET_NEW_DUCKS_AVAILABLE:
+      return {
+        ...state,
+        newDucksAvailable: false,
+        newDucksToAdd: [],
+        duckIds: [...state.newDucksToAdd, ...state.duckIds]
+      }
+    default:
+      return state
+  }
+}
