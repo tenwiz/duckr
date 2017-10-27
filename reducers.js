@@ -401,3 +401,46 @@ export default function usersDucks(state = initialState, action) {
       return state
   }
 }
+
+// UsersLikes
+
+const initialState = {
+  isFetching: false,
+  error: ''
+}
+
+export default function usersLike(state = initialState, action) {
+  switch (action.type) {
+    case FETCHING_LIKES:
+      return {
+        ...state,
+        isFetching: true
+      }
+    case FETCHING_LIKES_ERROR:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.error
+      }
+    case FETCHING_LIKES_SUCCESS:
+      return {
+        ...state,
+        ...initialState,
+        ...action.likes
+      }
+    case ADD_LIKE:
+      return {
+        ...state,
+        [action.duckId]: true
+      }
+    case ROMOVE_LIKE:
+      return Object.keys(state)
+        .filter(duckId => action.duckId !== duckId)
+        .reduce((pre, current) => {
+          pre[current] = state[current]
+          return pre
+        }, {})
+    default:
+      return state
+  }
+}
