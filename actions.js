@@ -1,4 +1,5 @@
 // Users
+
 {
   type: AUTH_USER,
   uid,
@@ -26,6 +27,7 @@
 
 
 // Ducks
+
 {
   type: FETCHING_DUCK,
 }
@@ -56,6 +58,7 @@
 
 
 // Feed
+
 {
   type: SETTING_FEED_LISTENER,
 }
@@ -80,14 +83,16 @@
 }
 
 
-//Listeners
+// Listeners
+
 {
   type: ADD_LISTENER,
   listenerId,
 }
 
 
-//Modal
+// Modal
+
 {
   type: OPEN_MODAL,
 }
@@ -102,7 +107,8 @@
 }
 
 
-//Replies
+// Replies
+
 {
   type: ADD_REPLY,
   duckId,
@@ -137,7 +143,8 @@
 }
 
 
-// likeCount
+// LikeCount
+
 {
   type: FETCHING_COUNT,
 }
@@ -154,7 +161,8 @@
 }
 
 
-//usersDucks
+// UsersDucks
+
 {
   type: FETCHING_USERS_DUCKS,
   uid,
@@ -179,7 +187,8 @@
 }
 
 
-// usersLikes
+// UsersLikes
+
 {
   type: ADD_LIKE,
   duckId,
