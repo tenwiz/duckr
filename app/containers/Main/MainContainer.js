@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Main extends Component {
+class MainContainer extends Component {
   render () {
     return (
       <p>{'Hello World!'}</p>
@@ -8,4 +8,4 @@ class Main extends Component {
   }
 }
 
-export default Main
+export default MainContainer
