@@ -35,11 +35,11 @@ const base = {
   module: {
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'},
-      {test: /\.css$/, loader: 'style!css?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]'}
+      {test: /\.css$/, loader: 'style-loader!css-loader?sourceMap&modules&localIdentName=[name]__[local]___[hash:base64:5]'}
     ]
   },
   resolve: {
-    root: path.resolve('./app')
+    modules: [path.resolve(__dirname, "app"), "node_modules"]
   }
 }
 
@@ -48,15 +48,13 @@ const developmentConfig = {
   devServer: {
     contentBase: PATHS.build,
     hot: true,
-    inline: true,
-    progress: true,
   },
   plugins: [HTMLWebpackPluginConfig, new webpack.HotModuleReplacementPlugin()]
 }
 
 const productionConfig = {
   devtool: 'cheap-module-source-map',
-  plugins: [HTMLWebpackPluginConfig, productionPlugin]
+  plugins: [HTMLWebpackPluginConfig, productionPlugin, new webpack.optimize.UglifyJsPlugin({ sourceMap: true, minimize: true })]
 }
 
 export default Object.assign({}, base, isProduction === true ? productionConfig : developmentConfig)
