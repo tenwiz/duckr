@@ -1,10 +1,14 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { MainContainer } from 'containers'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { MainContainer, HomeContainer } from 'containers'
 
 const routes = (
   <Router>
-    <Route path='/' component={MainContainer} />
+    <MainContainer>
+      <Switch>
+        <Route path='/' component={HomeContainer} />
+      </Switch>
+    </MainContainer>
   </Router>
 )
 
