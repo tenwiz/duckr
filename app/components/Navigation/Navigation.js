@@ -7,27 +7,27 @@ Navigation.propTypes = NavLinks.propTypes = ActionLinks.propTypes = {
   isAuthed: PropTypes.bool.isRequired,
 }
 
-function NavLinks({ isAuthed }) {
+function NavLinks ({ isAuthed }) {
   return isAuthed === true
     ? <ul>
-        <li><Link to='/' className={link}>Home</Link></li>
-      </ul>
+      <li><Link to='/' className={link}>Home</Link></li>
+    </ul>
     : <noscript />
 }
 
-function ActionLinks({ isAuthed }) {
+function ActionLinks ({ isAuthed }) {
   return isAuthed === true
     ? <ul>
-        <li>NEW DUCK</li>
-        <li><Link to='/logout' className={link}>Logout</Link></li>
-      </ul>
+      <li>NEW DUCK</li>
+      <li><Link to='/logout' className={link}>Logout</Link></li>
+    </ul>
     : <ul>
-        <li><Link to='/' className={link}>Home</Link></li>
-        <li><Link to='/auth' className={link}>Authenticate</Link></li>
-      </ul>
+      <li><Link to='/' className={link}>Home</Link></li>
+      <li><Link to='/auth' className={link}>Authenticate</Link></li>
+    </ul>
 }
 
-export default function Navigation({ isAuthed }) {
+export default function Navigation ({ isAuthed }) {
   return (
     <div className={container}>
       <nav className={navContainer}>
