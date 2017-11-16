@@ -1,29 +1,31 @@
+import auth from 'helpers/auth'
+
 const AUTH_USER = 'AUTH_USER'
 const UNAUTH_USER = 'UNAUTH_USER'
 const FETCHING_USER = 'FETCHING_USER'
 const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE'
 const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS'
 
-export function authUser (uid) {
+const authUser = (uid) => {
   return {
     type: AUTH_USER,
     uid,
   }
 }
 
-function unauthUser () {
+const unauthUser = () => {
   return {
     type: UNAUTH_USER,
   }
 }
 
-export function fetchingUser () {
+const fetchingUser = () => {
   return {
     type: FETCHING_USER,
   }
 }
 
-export function fetchingUserFailure (error) {
+const fetchingUserFailure = (error) => {
   console.warn(error)
   return {
     type: FETCHING_USER_FAILURE,
@@ -31,13 +33,21 @@ export function fetchingUserFailure (error) {
   }
 }
 
-export function fetchingUserSuccess (uid, user, timestamp) {
+const fetchingUserSuccess = (uid, user, timestamp) => {
   return {
     type: FETCHING_USER_SUCCESS,
     uid,
     user,
     timestamp,
   }
+}
+
+export const fetchAndHandleAuthedUser = () => (dispath) => {
+  dispath(fetchingUser())
+  return auth()
+    .then(user => dispath(fetchingUserSuccess(user.uid, user, Date.now())))
+    .then(user => dispath(authUser(user.uid)))
+    .catch(error => dispath(fetchingUserFailure(error)))
 }
 
 const initialUserState = {
@@ -49,7 +59,7 @@ const initialUserState = {
   },
 }
 
-function user (state = initialUserState, action) {
+const user = (state = initialUserState, action) => {
   switch (action.type) {
     case FETCHING_USER_SUCCESS :
       return {
@@ -69,7 +79,7 @@ const initialState = {
   authedId: '',
 }
 
-export default function users (state = initialState, action) {
+const users = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_USER :
       return {
@@ -111,3 +121,5 @@ export default function users (state = initialState, action) {
       return state
   }
 }
+
+export default users

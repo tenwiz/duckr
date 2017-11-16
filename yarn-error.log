@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/Cellar/node/8.7.0/bin/node /usr/local/Cellar/yarn/1.2.1/libexec/bin/yarn.js add react-router-dom
+  /usr/local/Cellar/node/8.7.0/bin/node /usr/local/Cellar/yarn/1.2.1/libexec/bin/yarn.js add redux-thunk
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/lihuayang/Library/Android/sdk/tools:/Users/lihuayang/Library/Android/sdk/platform-tools
