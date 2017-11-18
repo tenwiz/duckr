@@ -1,4 +1,4 @@
-export default function auth () {
+const auth = () => {
   return new Promise((resolve) => {
     setTimeout(() => resolve({
       name: 'Tyler McGinnis',
@@ -7,3 +7,9 @@ export default function auth () {
     }), 2000)
   })
 }
+
+export const logout = () => {
+  console.log('Logged Out!')
+}
+
+export default auth

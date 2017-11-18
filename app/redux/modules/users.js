@@ -1,4 +1,4 @@
-import auth from 'helpers/auth'
+import auth, { logout } from './../../helpers/auth'
 
 const AUTH_USER = 'AUTH_USER'
 const UNAUTH_USER = 'UNAUTH_USER'
@@ -42,12 +42,17 @@ const fetchingUserSuccess = (uid, user, timestamp) => {
   }
 }
 
-export const fetchAndHandleAuthedUser = () => (dispath) => {
-  dispath(fetchingUser())
+export const fetchAndHandleAuthedUser = () => (dispatch) => {
+  dispatch(fetchingUser())
   return auth()
-    .then(user => dispath(fetchingUserSuccess(user.uid, user, Date.now())))
-    .then(user => dispath(authUser(user.uid)))
-    .catch(error => dispath(fetchingUserFailure(error)))
+    .then(user => dispatch(fetchingUserSuccess(user.uid, user, Date.now())))
+    .then(user => dispatch(authUser(user.uid)))
+    .catch(error => dispatch(fetchingUserFailure(error)))
+}
+
+export const logoutAndUnauth = () => (dispatch) => {
+  logout()
+  dispatch(unauthUser())
 }
 
 const initialUserState = {

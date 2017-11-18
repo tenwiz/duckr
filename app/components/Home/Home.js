@@ -1,7 +1,7 @@
 import React from 'react'
 import { container, title, slogan } from './styles.css'
 
-export default function Home () {
+const Home = () => {
   return (
     <div className={container}>
       <p className={title}>Duckr</p>
@@ -9,3 +9,5 @@ export default function Home () {
     </div>
   )
 }
+
+export default Home
