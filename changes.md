@@ -1,41 +1,6 @@
-## Optional
-
-- I used BrowserRouter as router and used BrowserHistory instead of hashHistory, changes needs to be made in the routes.js file
-```javascript
-import { BrowserRouter as Router, Route } from 'react-router-dom'
-```
-
-## Changes
-
-- In the routes.js file use MainContainer with a children Route instead of nested Routers and IndexRoute
-```javascript
-  <Router>
-    <MainContainer>
-      <Route exact={true} path='/' component={HomeContainer} />
-    </MainContainer>
-  </Router>
-```
-
-- Wrap the redux connected function call inside a withRouter function call in order to work with react router v4
-```javascript
-import { withRouter } from 'react-router'
-  export default withRouter(connect(
-    (state) => ({ isAuthed: state.isAuthed })
-  )(MainContainer))
-```
 #### Changed applied to the Route Protection with React Router lesson
 
 You can view the full changes applied in the following [commit](https://github.com/warborn/duckr/commit/0f059028c84627e295bacd96353bf2025360074d)
-
- - Use this.context.router.history object to do the 'feed' redirection (Used the 4 way as stated [here](https://stackoverflow.com/a/42124328) to stick to the course code)
-```javascript
-handleAuth (e) {
-  e.preventDefault();
-
-  this.props.fetchAndHandleAuthedUser()
-    .then(() => this.context.router.history.replace('feed'))
-}
-```
 
 - In order to replace the onEnter property because is not longer there on react-router v4, i opted for a [HOC](https://facebook.github.io/react/docs/higher-order-components.html) to make the least amount of changes to the original course code, the idea of using a HOC was taken from [here](https://codeburst.io/react-router-v4-unofficial-migration-guide-5a370b8905a)
 
