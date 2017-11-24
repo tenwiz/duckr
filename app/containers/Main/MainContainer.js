@@ -20,7 +20,7 @@ class MainContainer extends Component {
 
 MainContainer.propTypes = {
   children: PropTypes.any,
-  isAuthed: PropTypes.bool.isRequired
+  isAuthed: PropTypes.bool.isRequired,
 }
 
 export default withRouter(connect(

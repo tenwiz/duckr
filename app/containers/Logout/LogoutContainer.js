@@ -9,7 +9,7 @@ class LogoutContainer extends Component {
     this.props.dispatch(logoutAndUnauth())
   }
 
-  render() {
+  render () {
     return (
       <Logout />
     )
@@ -17,7 +17,7 @@ class LogoutContainer extends Component {
 }
 
 LogoutContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
 }
 
 export default connect()(LogoutContainer)

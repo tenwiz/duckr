@@ -28,7 +28,7 @@ AuthenticateContainer.propTypes = {
   fetchAndHandleAuthedUser: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   error: PropTypes.string.isRequired,
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
 }
 
 export default connect(

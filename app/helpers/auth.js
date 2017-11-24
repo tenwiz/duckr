@@ -8,6 +8,10 @@ const auth = () => {
   })
 }
 
+export const checkIfAuthed = (store) => {
+  return store.getState().isAuthed
+}
+
 export const logout = () => {
   console.log('Logged Out!')
 }
