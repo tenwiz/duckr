@@ -1,19 +1,21 @@
+import { ref, firebaseAuth } from '../config/constants'
+
 const auth = () => {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve({
-      name: 'Tyler McGinnis',
-      avatar: 'https://pbs.twimg.com/profile_images/378800000605536525/891a881bde93a1fc3e289528fb859b96_400x400.jpeg',
-      uid: 'the-uid',
-    }), 2000)
-  })
+  return firebaseAuth().signInWithPopup(new firebaseAuth.FacebookAuthProvider())
 }
 
 export const checkIfAuthed = (store) => {
-  return store.getState().isAuthed
+  return store.getState().isAuthed === true
 }
 
 export const logout = () => {
-  console.log('Logged Out!')
+  return firebaseAuth().signOut()
+}
+
+export const saveUser = (user) => {
+  return ref.child(`users/${user.uid}`)
+    .set(user)
+    .then(() => user)
 }
 
 export default auth

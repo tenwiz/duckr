@@ -1,12 +1,5 @@
 #### Changed applied to the Route Protection with React Router lesson
 
-- Use this.context.router.history inside of the onAuthStateChanged callback when authenticating on MainContainer
-```javascript
-if (this.props.location.pathname === '/feed') {
-  this.context.router.history.replace('feed')
-}
-```
-
 - Add the contentLabel modal property to the ReactModal component
 ```javascript
 <ReactModal 
