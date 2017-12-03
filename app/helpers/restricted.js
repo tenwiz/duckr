@@ -16,7 +16,7 @@ export default (BaseComponent, store) => {
     }
 
     checkAuthentication = (props) => {
-      if (store.getState().isFetching === true) {
+      if (store.getState().users.isFetching === true) {
         return
       }
 
@@ -39,9 +39,10 @@ export default (BaseComponent, store) => {
     }
   }
 
+  const { object } = PropTypes
   Restricted.propTypes = {
-    location: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
+    location: object.isRequired,
+    history: object.isRequired,
   }
 
   return withRouter(Restricted)

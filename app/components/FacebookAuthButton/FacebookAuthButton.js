@@ -12,9 +12,10 @@ const FacebookAuthButton = ({ onAuth, isFetching }) => {
   )
 }
 
+const { func, bool } = PropTypes
 FacebookAuthButton.propTypes = {
-  onAuth: PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired,
+  onAuth: func.isRequired,
+  isFetching: bool.isRequired,
 }
 
 export default FacebookAuthButton

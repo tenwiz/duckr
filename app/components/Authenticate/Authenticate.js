@@ -13,10 +13,11 @@ const Authenticate = ({ onAuth, isFetching, error }) => {
   )
 }
 
+const { string, func, bool } = PropTypes
 Authenticate.propTypes = {
-  error: PropTypes.string.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  onAuth: PropTypes.func.isRequired,
+  error: string.isRequired,
+  isFetching: bool.isRequired,
+  onAuth: func.isRequired,
 }
 
 export default Authenticate

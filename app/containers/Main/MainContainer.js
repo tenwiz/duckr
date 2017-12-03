@@ -29,9 +29,9 @@ class MainContainer extends Component {
   }
 
   render () {
-    const { isAuthed, children } = this.props
+    const { isAuthed, children, isFetching } = this.props
 
-    return this.props.isFetching === true
+    return isFetching === true
       ? null
       : <div className={container}>
         <Navigation isAuthed={isAuthed} />
@@ -42,18 +42,19 @@ class MainContainer extends Component {
   }
 }
 
+const { object, func, bool, any } = PropTypes
 MainContainer.propTypes = {
-  children: PropTypes.any,
-  isAuthed: PropTypes.bool.isRequired,
-  authUser: PropTypes.func.isRequired,
-  fetchingUserSuccess: PropTypes.func.isRequired,
-  removeFetchingUser: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired,
-  history: PropTypes.object.isRequired,
-  isFetching: PropTypes.bool.isRequired,
+  children: any,
+  isAuthed: bool.isRequired,
+  authUser: func.isRequired,
+  fetchingUserSuccess: func.isRequired,
+  removeFetchingUser: func.isRequired,
+  location: object.isRequired,
+  history: object.isRequired,
+  isFetching: bool.isRequired,
 }
 
 export default withRouter(connect(
-  state => ({isAuthed: state.isAuthed, isFetching: state.isFetching}),
+  ({users}) => ({isAuthed: users.isAuthed, isFetching: users.isFetching}),
   dispatch => bindActionCreators(userActionCreators, dispatch)
 )(MainContainer))

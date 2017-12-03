@@ -7,9 +7,10 @@ import * as userActionCreators from './../../redux/modules/users'
 
 class AuthenticateContainer extends Component {
   handleAuth = (e) => {
+    const { fetchAndHandleAuthedUser, history } = this.props
     e.preventDefault()
-    this.props.fetchAndHandleAuthedUser()
-      .then(() => this.props.history.replace('/feed'))
+    fetchAndHandleAuthedUser()
+      .then(() => history.replace('/feed'))
   }
 
   render () {
@@ -24,14 +25,15 @@ class AuthenticateContainer extends Component {
   }
 }
 
+const { object, string, func, bool } = PropTypes
 AuthenticateContainer.propTypes = {
-  fetchAndHandleAuthedUser: PropTypes.func.isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  error: PropTypes.string.isRequired,
-  history: PropTypes.object.isRequired,
+  fetchAndHandleAuthedUser: func.isRequired,
+  isFetching: bool.isRequired,
+  error: string.isRequired,
+  history: object.isRequired,
 }
 
 export default connect(
-  state => ({isFetching: state.isFetching, error: state.error}),
+  ({users}) => ({isFetching: users.isFetching, error: users.error}),
   dispatch => bindActionCreators(userActionCreators, dispatch)
 )(AuthenticateContainer)

@@ -5,7 +5,7 @@ const auth = () => {
 }
 
 export const checkIfAuthed = (store) => {
-  return store.getState().isAuthed === true
+  return store.getState().users.isAuthed === true
 }
 
 export const logout = () => {
