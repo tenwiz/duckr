@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import { ModalContainer } from '../../containers'
 import { container, navContainer, link } from './styles.css'
+const { bool } = PropTypes
 
 const NavLinks = ({ isAuthed }) => {
   return isAuthed === true
@@ -35,7 +36,6 @@ const Navigation = ({ isAuthed }) => {
   )
 }
 
-const { bool } = PropTypes
 Navigation.propTypes = NavLinks.propTypes = ActionLinks.propTypes = {
   isAuthed: bool.isRequired,
 }

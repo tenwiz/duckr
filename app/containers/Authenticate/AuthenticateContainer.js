@@ -4,6 +4,7 @@ import { Authenticate } from './../../components'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as userActionCreators from './../../redux/modules/users'
+const { object, string, func, bool } = PropTypes
 
 class AuthenticateContainer extends Component {
   handleAuth = (e) => {
@@ -25,7 +26,6 @@ class AuthenticateContainer extends Component {
   }
 }
 
-const { object, string, func, bool } = PropTypes
 AuthenticateContainer.propTypes = {
   fetchAndHandleAuthedUser: func.isRequired,
   isFetching: bool.isRequired,

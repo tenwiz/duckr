@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { button } from './styles.css'
+const { func, bool } = PropTypes
 
 const FacebookAuthButton = ({ onAuth, isFetching }) => {
   return (
@@ -12,7 +13,6 @@ const FacebookAuthButton = ({ onAuth, isFetching }) => {
   )
 }
 
-const { func, bool } = PropTypes
 FacebookAuthButton.propTypes = {
   onAuth: func.isRequired,
   isFetching: bool.isRequired,

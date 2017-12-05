@@ -5,6 +5,7 @@ import {
   newDuckTop, pointer, newDuckInputContainer,
   newDuckInput, submitDuckBtn, darkBtn } from './styles.css'
 import { formatDuck } from '../../helpers/utils'
+const { object, string, func, bool } = PropTypes
 
 const modalStyles = {
   content: {
@@ -52,7 +53,6 @@ const Modal = (props) => {
   )
 }
 
-const { object, string, func, bool } = PropTypes
 Modal.propTypes = {
   duckText: string.isRequired,
   closeModal: func.isRequired,

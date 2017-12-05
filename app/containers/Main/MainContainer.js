@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux'
 import * as userActionCreators from './../../redux/modules/users'
 import { formatUserInfo } from './../../helpers/utils'
 import { firebaseAuth } from './../../config/constants'
+const { object, func, bool, any } = PropTypes
 
 class MainContainer extends Component {
   componentDidMount () {
@@ -42,7 +43,6 @@ class MainContainer extends Component {
   }
 }
 
-const { object, func, bool, any } = PropTypes
 MainContainer.propTypes = {
   children: any,
   isAuthed: bool.isRequired,

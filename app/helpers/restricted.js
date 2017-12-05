@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { checkIfAuthed } from './auth'
+const { object } = PropTypes
 
 export default (BaseComponent, store) => {
   class Restricted extends Component {
@@ -39,7 +40,6 @@ export default (BaseComponent, store) => {
     }
   }
 
-  const { object } = PropTypes
   Restricted.propTypes = {
     location: object.isRequired,
     history: object.isRequired,

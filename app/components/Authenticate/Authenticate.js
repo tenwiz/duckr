@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { centeredContainer, largeHeader, errorMsg } from './../../sharedStyles/styles.css'
 import { FacebookAuthButton } from './../../components'
+const { string, func, bool } = PropTypes
 
 const Authenticate = ({ onAuth, isFetching, error }) => {
   return (
@@ -13,7 +14,6 @@ const Authenticate = ({ onAuth, isFetching, error }) => {
   )
 }
 
-const { string, func, bool } = PropTypes
 Authenticate.propTypes = {
   error: string.isRequired,
   isFetching: bool.isRequired,

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import { logoutAndUnauth } from './../../redux/modules/users'
 import { Logout } from './../../components'
+const { func } = PropTypes
 
 class LogoutContainer extends Component {
   componentDidMount () {
@@ -16,7 +17,6 @@ class LogoutContainer extends Component {
   }
 }
 
-const { func } = PropTypes
 LogoutContainer.propTypes = {
   dispatch: func.isRequired,
 }

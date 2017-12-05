@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { Feed } from './../../components'
 import { bindActionCreators } from 'redux'
 import * as feedActionCreators from '../../redux/modules/feed'
+const { array, string, func, bool } = PropTypes
 
 class FeedContainer extends Component {
   componentDidMount () {
@@ -24,7 +25,6 @@ class FeedContainer extends Component {
   }
 }
 
-const { array, string, func, bool } = PropTypes
 FeedContainer.propTypes = {
   duckIds: array.isRequired,
   newDucksAvailable: bool.isRequired,

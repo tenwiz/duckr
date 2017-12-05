@@ -1,14 +1,5 @@
 #### Changed applied to the Route Protection with React Router lesson
 
-- Add the contentLabel modal property to the ReactModal component
-```javascript
-<ReactModal 
-  style={modalStyles} 
-  isOpen={props.isOpen} 
-  onRequestClose={props.closeModal}
-  contentLabel='Modal'>
-```
-
 - Use this.props.match.params.uid instead of this.props.routeParams.uid to get the user's uid from the URL inside the UserContainer component
 ```javascript
   componentDidMount () {

@@ -12,16 +12,16 @@
 }
 
 .newDuckInputContainer {
-  composes: baseTextAreaContainer from 'sharedStyles/styles.css';
+  composes: baseTextAreaContainer from '../../sharedStyles/styles.css';
 }
 
 .newDuckInput {
-  composes: baseTextArea from 'sharedStyles/styles.css';
+  composes: baseTextArea from '../../sharedStyles/styles.css';
   border-width: 0;
 }
 
 .darkBtn {
-  composes: darkBtn from 'sharedStyles/styles.css';
+  composes: darkBtn from '../../sharedStyles/styles.css';
   text-decoration: none;
 }
 
