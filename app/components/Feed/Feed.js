@@ -5,20 +5,18 @@ import { DuckContainer } from '../../containers'
 import { errorMsg } from '../../sharedStyles/styles.css'
 const { func, string, bool, array } = PropTypes
 
-const NewDucksAvailable = ({handleClick}) => {
-  return (
-    <div className={newDuckContainer} onClick={handleClick}>
-      {'New Ducks Available'}
-    </div>
-  )
-}
+const NewDucksAvailable = ({handleClick}) => (
+  <div className={newDuckContainer} onClick={handleClick}>
+    {'New Ducks Available'}
+  </div>
+)
 
 NewDucksAvailable.propTypes = {
   handleClick: func.isRequired,
 }
 
-const Feed = (props) => {
-  return props.isFetching === true
+const Feed = (props) => (
+  props.isFetching === true
     ? <h1 className={header}>{'Fetching'}</h1>
     : <div>
       {props.newDucksAvailable ? <NewDucksAvailable handleClick={props.resetNewDucksAvailable} /> : null}
@@ -32,7 +30,7 @@ const Feed = (props) => {
       ))}
       {props.error ? <p className={errorMsg}>{props.error}</p> : null}
     </div>
-}
+)
 
 Feed.propTypes = {
   duckIds: array.isRequired,

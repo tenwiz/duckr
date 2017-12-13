@@ -1,11 +1,11 @@
 const ADD_LISTENER = 'ADD_LISTENER'
 
-export const addListener = (listenerId) => {
-  return {
+export const addListener = (listenerId) => (
+  {
     type: ADD_LISTENER,
     listenerId,
   }
-}
+)
 
 const listeners = (state = {}, action) => {
   switch (action.type) {

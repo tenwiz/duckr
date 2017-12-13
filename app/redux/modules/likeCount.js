@@ -3,11 +3,11 @@ const FETCHING_COUNT = 'FETCHING_COUNT'
 const FETCHING_COUNT_ERROR = 'FETCHING_COUNT_ERROR'
 const FETCHING_COUNT_SUCCESS = 'FETCHING_COUNT_SUCCESS'
 
-const fetchingCount = () => {
-  return {
+const fetchingCount = () => (
+  {
     type: FETCHING_COUNT,
   }
-}
+)
 
 const fetchingCountError = (error) => {
   console.warn(error)
@@ -17,13 +17,13 @@ const fetchingCountError = (error) => {
   }
 }
 
-const fetchingCountSuccess = (duckId, count) => {
-  return {
+const fetchingCountSuccess = (duckId, count) => (
+  {
     type: FETCHING_COUNT_SUCCESS,
     duckId,
     count,
   }
-}
+)
 
 const count = (state = 0, action) => {
   switch (action.type) {

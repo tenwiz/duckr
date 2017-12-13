@@ -44,15 +44,15 @@ DuckContainer.propTypes = {
   history: object.isRequired,
 }
 
-const mapStateToProps = ({ ducks, likeCount, usersLikes }, props) => {
-  return {
+const mapStateToProps = ({ ducks, likeCount, usersLikes }, props) => (
+  {
     duck: ducks[props.duckId],
     hideLikeCount: props.hideLikeCount,
     hideReplyBtn: props.hideReplyBtn,
     isLiked: usersLikes[props.duckId] === true,
     numberOfLikes: likeCount[props.duckId],
   }
-}
+)
 
 export default connect(
   mapStateToProps

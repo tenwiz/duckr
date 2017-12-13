@@ -19,9 +19,9 @@ const modalStyles = {
 }
 
 const Modal = (props) => {
-  const submitDuck = () => {
-    return props.duckFanout(formatDuck(props.duckText, props.user))
-  }
+  const submitDuck = () => (
+    props.duckFanout(formatDuck(props.duckText, props.user))
+  )
 
   return (
     <div>

@@ -5,16 +5,16 @@ import { ModalContainer } from '../../containers'
 import { container, navContainer, link } from './styles.css'
 const { bool } = PropTypes
 
-const NavLinks = ({ isAuthed }) => {
-  return isAuthed === true
+const NavLinks = ({ isAuthed }) => (
+  isAuthed === true
     ? <ul>
       <li><Link to='/' className={link}>Home</Link></li>
     </ul>
     : null
-}
+)
 
-const ActionLinks = ({ isAuthed }) => {
-  return isAuthed === true
+const ActionLinks = ({ isAuthed }) => (
+  isAuthed === true
     ? <ul>
       <li><ModalContainer /></li>
       <li><Link to='/logout' className={link}>Logout</Link></li>
@@ -23,18 +23,16 @@ const ActionLinks = ({ isAuthed }) => {
       <li><Link to='/' className={link}>Home</Link></li>
       <li><Link to='/auth' className={link}>Authenticate</Link></li>
     </ul>
-}
+)
 
-const Navigation = ({ isAuthed }) => {
-  return (
-    <div className={container}>
-      <nav className={navContainer}>
-        <NavLinks isAuthed={isAuthed} />
-        <ActionLinks isAuthed={isAuthed} />
-      </nav>
-    </div>
-  )
-}
+const Navigation = ({ isAuthed }) => (
+  <div className={container}>
+    <nav className={navContainer}>
+      <NavLinks isAuthed={isAuthed} />
+      <ActionLinks isAuthed={isAuthed} />
+    </nav>
+  </div>
+)
 
 Navigation.propTypes = NavLinks.propTypes = ActionLinks.propTypes = {
   isAuthed: bool.isRequired,

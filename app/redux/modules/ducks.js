@@ -9,11 +9,11 @@ const ADD_DUCK = 'ADD_DUCK'
 const ADD_MULTIPLE_DUCKS = 'ADD_MULTIPLE_DUCKS'
 const REMOVE_FETCHING = 'REMOVE_FETCHING'
 
-const fetchingDuck = () => {
-  return {
+const fetchingDuck = () => (
+  {
     type: FETCHING_DUCK,
   }
-}
+)
 
 const fetchingDuckError = (error) => {
   console.warn(error)
@@ -23,32 +23,32 @@ const fetchingDuckError = (error) => {
   }
 }
 
-const fetchingDuckSuccess = (duck) => {
-  return {
+const fetchingDuckSuccess = (duck) => (
+  {
     type: FETCHING_DUCK_SUCCESS,
     duck,
   }
-}
+)
 
-const removeFetching = () => {
-  return {
+const removeFetching = () => (
+  {
     type: REMOVE_FETCHING,
   }
-}
+)
 
-const addDuck = (duck) => {
-  return {
+const addDuck = (duck) => (
+  {
     type: ADD_DUCK,
     duck,
   }
-}
+)
 
-export const addMultipleDucks = (ducks) => {
-  return {
+export const addMultipleDucks = (ducks) => (
+  {
     type: ADD_MULTIPLE_DUCKS,
     ducks,
   }
-}
+)
 
 export const duckFanout = (duck) => (dispatch, getState) => {
   const uid = getState().users.authedId

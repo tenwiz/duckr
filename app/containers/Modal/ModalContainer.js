@@ -14,9 +14,9 @@ const mapStateToProps = ({ modal, users }) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({...modalActionCreators, ...ducksActionCreators}, dispatch)
-}
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({...modalActionCreators, ...ducksActionCreators}, dispatch)
+)
 
 export default connect(
   mapStateToProps,

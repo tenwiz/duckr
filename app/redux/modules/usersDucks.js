@@ -3,12 +3,12 @@ const FETCHING_USERS_DUCKS_ERROR = 'FETCHING_USERS_DUCKS_ERROR'
 const FETCHING_USERS_DUCKS_SUCCESS = 'FETCHING_USERS_DUCKS_SUCCESS'
 const ADD_SINGLE_USERS_DUCK = 'ADD_SINGLE_USERS_DUCK'
 
-const fetchingUsersDucks = (uid) => {
-  return {
+const fetchingUsersDucks = (uid) => (
+  {
     type: FETCHING_USERS_DUCKS,
     uid,
   }
-}
+)
 
 const fetchingUsersDucksError = (error) => {
   console.warn(error)
@@ -18,22 +18,22 @@ const fetchingUsersDucksError = (error) => {
   }
 }
 
-const fetchingUsersDucksSuccess = (uid, duckIds, lastUpdated) => {
-  return {
+const fetchingUsersDucksSuccess = (uid, duckIds, lastUpdated) => (
+  {
     type: FETCHING_USERS_DUCKS_SUCCESS,
     uid,
     duckIds,
     lastUpdated,
   }
-}
+)
 
-export const addSingleUsersDuck = (uid, duckId) => {
-  return {
+export const addSingleUsersDuck = (uid, duckId) => (
+  {
     type: ADD_SINGLE_USERS_DUCK,
     uid,
     duckId,
   }
-}
+)
 
 const initialUsersDuckState = {
   lastUpdated: 0,

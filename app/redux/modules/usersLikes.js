@@ -4,25 +4,25 @@ const FETCHING_LIKES = 'FETCHING_LIKES'
 const FETCHING_LIKES_ERROR = 'FETCHING_LIKES_ERROR'
 const FETCHING_LIKES_SUCCESS = 'FETCHING_LIKES_SUCCESS'
 
-const addLike = (duckId) => {
-  return {
+const addLike = (duckId) => (
+  {
     type: ADD_LIKE,
     duckId,
   }
-}
+)
 
-const removeLike = (duckId) => {
-  return {
+const removeLike = (duckId) => (
+  {
     type: REMOVE_LIKE,
     duckId,
   }
-}
+)
 
-const fetchingLikes = () => {
-  return {
+const fetchingLikes = () => (
+  {
     type: FETCHING_LIKES,
   }
-}
+)
 
 const fetchLikesError = (error) => {
   console.warn(error)
@@ -32,12 +32,12 @@ const fetchLikesError = (error) => {
   }
 }
 
-const fetchingLikesSuccess = (likes) => {
-  return {
+const fetchingLikesSuccess = (likes) => (
+  {
     type: FETCHING_LIKES_SUCCESS,
     likes,
   }
-}
+)
 
 const initialState = {
   isFetching: false,

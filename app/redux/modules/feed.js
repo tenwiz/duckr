@@ -8,11 +8,11 @@ const SETTING_FEED_LISTENER_SUCCESS = 'SETTING_FEED_LISTENER_SUCCESS'
 const ADD_NEW_DUCK_ID_TO_FEED = 'ADD_NEW_DUCK_ID_TO_FEED'
 const RESET_NEW_DUCKS_AVAILABLE = 'RESET_NEW_DUCKS_AVAILABLE'
 
-const settingFeedListener = () => {
-  return {
+const settingFeedListener = () => (
+  {
     type: SETTING_FEED_LISTENER,
   }
-}
+)
 
 const settingFeedListenerError = (error) => {
   console.warn(error)
@@ -22,25 +22,25 @@ const settingFeedListenerError = (error) => {
   }
 }
 
-const settingFeedListenerSuccess = (duckIds) => {
-  return {
+const settingFeedListenerSuccess = (duckIds) => (
+  {
     type: SETTING_FEED_LISTENER_SUCCESS,
     duckIds,
   }
-}
+)
 
-const addNewDuckIdToFeed = (duckId) => {
-  return {
+const addNewDuckIdToFeed = (duckId) => (
+  {
     type: ADD_NEW_DUCK_ID_TO_FEED,
     duckId,
   }
-}
+)
 
-export const resetNewDucksAvailable = () => {
-  return {
+export const resetNewDucksAvailable = () => (
+  {
     type: RESET_NEW_DUCKS_AVAILABLE,
   }
-}
+)
 
 export const setAndHandleFeedListener = () => (dispatch, getState) => {
   let initialFetch = true

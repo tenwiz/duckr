@@ -8,24 +8,24 @@ const FETCHING_USER_FAILURE = 'FETCHING_USER_FAILURE'
 const FETCHING_USER_SUCCESS = 'FETCHING_USER_SUCCESS'
 const REMOVE_FETCHING_USER = 'REMOVE_FETCHING_USER'
 
-export const authUser = (uid) => {
-  return {
+export const authUser = (uid) => (
+  {
     type: AUTH_USER,
     uid,
   }
-}
+)
 
-const unauthUser = () => {
-  return {
+const unauthUser = () => (
+  {
     type: UNAUTH_USER,
   }
-}
+)
 
-const fetchingUser = () => {
-  return {
+const fetchingUser = () => (
+  {
     type: FETCHING_USER,
   }
-}
+)
 
 const fetchingUserFailure = (error) => {
   console.warn(error)
@@ -35,14 +35,14 @@ const fetchingUserFailure = (error) => {
   }
 }
 
-export const fetchingUserSuccess = (uid, user, timestamp) => {
-  return {
+export const fetchingUserSuccess = (uid, user, timestamp) => (
+  {
     type: FETCHING_USER_SUCCESS,
     uid,
     user,
     timestamp,
   }
-}
+)
 
 export const fetchAndHandleAuthedUser = () => (dispatch) => {
   dispatch(fetchingUser())
@@ -61,11 +61,11 @@ export const logoutAndUnauth = () => (dispatch) => {
   dispatch(unauthUser())
 }
 
-export const removeFetchingUser = () => {
-  return {
+export const removeFetchingUser = () => (
+  {
     type: REMOVE_FETCHING_USER,
   }
-}
+)
 
 const initialUserState = {
   lastUpdated: 0,

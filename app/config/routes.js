@@ -5,19 +5,17 @@ import {
   LogoutContainer,
 } from './../containers'
 
-const getRoutes = (checkAuth) => {
-  return (
-    <Router>
-      <MainContainer>
-        <Switch>
-          <Route path='/auth' component={checkAuth(AuthenticateContainer)} />
-          <Route path='/feed' component={checkAuth(FeedContainer)} />
-          <Route path='/logout' component={LogoutContainer} />
-          <Route path='/' component={checkAuth(HomeContainer)} />
-        </Switch>
-      </MainContainer>
-    </Router>
-  )
-}
+const getRoutes = (checkAuth) => (
+  <Router>
+    <MainContainer>
+      <Switch>
+        <Route path='/auth' component={checkAuth(AuthenticateContainer)} />
+        <Route path='/feed' component={checkAuth(FeedContainer)} />
+        <Route path='/logout' component={LogoutContainer} />
+        <Route path='/' component={checkAuth(HomeContainer)} />
+      </Switch>
+    </MainContainer>
+  </Router>
+)
 
 export default getRoutes

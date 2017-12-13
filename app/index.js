@@ -16,9 +16,9 @@ const store = createStore(
   )
 )
 
-const checkAuth = (component) => {
-  return restricted(component, store)
-}
+const checkAuth = (component) => (
+  restricted(component, store)
+)
 
 ReactDOM.render(
   <Provider store={store}>
