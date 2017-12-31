@@ -42,7 +42,6 @@ const Duck = ({ isLiked, handleDeleteLike, addAndHandleLike, hideReplyBtn,
             </div>
           </div>
         </div>
-
     </div>
   )
 }

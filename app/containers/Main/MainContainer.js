@@ -6,19 +6,21 @@ import { Navigation } from './../../components'
 import { container, innerContainer } from './styles.css'
 import { bindActionCreators } from 'redux'
 import * as userActionCreators from './../../redux/modules/users'
+import * as usersLikesActionCreators from './../../redux/modules/usersLikes'
 import { formatUserInfo } from './../../helpers/utils'
 import { firebaseAuth } from './../../config/constants'
 const { object, func, bool, any } = PropTypes
 
 class MainContainer extends Component {
   componentDidMount () {
-    const { authUser, removeFetchingUser, fetchingUserSuccess, location, history } = this.props
+    const { authUser, removeFetchingUser, fetchingUserSuccess, location, history, setUsersLikes } = this.props
 
     firebaseAuth().onAuthStateChanged(user => {
       if (user) {
         const userData = user.providerData[0]
         const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)
         authUser(user.uid)
+        setUsersLikes()
         fetchingUserSuccess(user.uid, userInfo, Date.now())
         if (location.pathname === '/') {
           history.replace('/feed')
@@ -56,5 +58,8 @@ MainContainer.propTypes = {
 
 export default withRouter(connect(
   ({users}) => ({isAuthed: users.isAuthed, isFetching: users.isFetching}),
-  dispatch => bindActionCreators(userActionCreators, dispatch)
+  dispatch => bindActionCreators({
+    ...userActionCreators,
+    ...usersLikesActionCreators
+  }, dispatch)
 )(MainContainer))
