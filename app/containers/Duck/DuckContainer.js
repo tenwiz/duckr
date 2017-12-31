@@ -13,15 +13,13 @@ class DuckContainer extends Component {
   }
 
   goToProfile = (e) => {
-    const { history, duck } = this.props
     e.stopPropagation()
-    history.push(`/${duck.uid}`)
+    this.context.router.history.push(`/${this.props.duck.uid}`)
   }
 
   handleClick = (e) => {
-    const { history, duck } = this.props
     e.preventDefault()
-    history.push(`/duckDetail/${duck.duckId}`)
+    this.context.router.history.push(`/duckDetail/${this.props.duck.duckId}`)
   }
 
   render() {
@@ -34,6 +32,10 @@ class DuckContainer extends Component {
   }
 }
 
+DuckContainer.contextTypes = {
+  router: PropTypes.object.isRequired
+}
+
 DuckContainer.propTypes = {
   duck: object.isRequired,
   handleClick: func,
@@ -43,7 +45,6 @@ DuckContainer.propTypes = {
   numberOfLikes: number,
   addAndHandleLike: func.isRequired,
   handleDeleteLike: func.isRequired,
-  history: object.isRequired,
 }
 
 const mapStateToProps = ({ ducks, likeCount, usersLikes }, props) => (
