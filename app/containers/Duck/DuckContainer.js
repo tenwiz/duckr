@@ -33,7 +33,7 @@ class DuckContainer extends Component {
 }
 
 DuckContainer.contextTypes = {
-  router: PropTypes.object.isRequired
+  router: PropTypes.object.isRequired,
 }
 
 DuckContainer.propTypes = {

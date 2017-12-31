@@ -18,33 +18,33 @@ const modalStyles = {
   },
 }
 
-const Modal = (props) => {
+const Modal = ({ duckFanout, duckText, user, openModal, isOpen, closeModal, updateDuckText, isSubmitDisabled }) => {
   const submitDuck = () => (
-    props.duckFanout(formatDuck(props.duckText, props.user))
+    duckFanout(formatDuck(duckText, user))
   )
 
   return (
     <div>
-      <span className={darkBtn} onClick={props.openModal}>
+      <span className={darkBtn} onClick={openModal}>
         Duck
       </span>
-      <ReactModal style={modalStyles} isOpen={props.isOpen} onRequestClose={props.closeModal}
+      <ReactModal style={modalStyles} isOpen={isOpen} onRequestClose={closeModal}
         ariaHideApp={false}>
         <div className={newDuckTop}>
           <span>Compose new Duck</span>
-          <span onClick={props.closeModal} className={pointer}>X</span>
+          <span onClick={closeModal} className={pointer}>X</span>
         </div>
         <div className={newDuckInputContainer}>
           <textarea
-            onChange={e => props.updateDuckText(e.target.value)}
-            value={props.duckText}
+            onChange={e => updateDuckText(e.target.value)}
+            value={duckText}
             maxLength={140}
             className={newDuckInput}
             placeholder="What's on your mind?" />
         </div>
         <button
           className={submitDuckBtn}
-          disabled={props.isSubmitDisabled}
+          disabled={isSubmitDisabled}
           onClick={submitDuck}>
           Duck
         </button>

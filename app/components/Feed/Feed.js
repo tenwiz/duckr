@@ -15,20 +15,20 @@ NewDucksAvailable.propTypes = {
   handleClick: func.isRequired,
 }
 
-const Feed = (props) => (
-  props.isFetching === true
+const Feed = ({ isFetching, newDucksAvailable, resetNewDucksAvailable, duckIds, error }) => (
+  isFetching === true
     ? <h1 className={header}>{'Fetching'}</h1>
     : <div>
-      {props.newDucksAvailable ? <NewDucksAvailable handleClick={props.resetNewDucksAvailable} /> : null}
-      {props.duckIds.length === 0
+      {newDucksAvailable ? <NewDucksAvailable handleClick={resetNewDucksAvailable} /> : null}
+      {duckIds.length === 0
         ? <p className={header}>{'This is unfortunate.'} <br /> {'It appears there are no ducks yet 😞'}</p>
         : null}
-      {props.duckIds.map((id) => (
+      {duckIds.map((id) => (
         <DuckContainer
           duckId={id}
           key={id} />
       ))}
-      {props.error ? <p className={errorMsg}>{props.error}</p> : null}
+      {error ? <p className={errorMsg}>{error}</p> : null}
     </div>
 )
 
