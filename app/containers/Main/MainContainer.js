@@ -36,12 +36,14 @@ class MainContainer extends Component {
 
     return isFetching === true
       ? null
-      : <div className={container}>
-        <Navigation isAuthed={isAuthed} />
-        <div className={innerContainer}>
-          {children}
+      : (
+        <div className={container}>
+          <Navigation isAuthed={isAuthed} />
+          <div className={innerContainer}>
+            {children}
+          </div>
         </div>
-      </div>
+      )
   }
 }
 
