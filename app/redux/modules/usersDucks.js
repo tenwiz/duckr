@@ -55,7 +55,7 @@ const usersDuck = (state = initialUsersDuckState, action) => {
   }
 }
 
-export const fetchAndHandleUsersDucks = (uid) => (dispatch, getState) => {
+export const fetchAndHandleUsersDucks = (uid) => (dispatch) => {
   dispatch(fetchingUsersDucks())
 
   fetchUsersDucks(uid)
