@@ -8,7 +8,7 @@ const Authenticate = ({ onAuth, isFetching, error }) => (
   <div className={centeredContainer}>
     <h1 className={largeHeader}>Authenticate</h1>
     <FacebookAuthButton isFetching={isFetching} onAuth={onAuth} />
-    {error ? <p className={errorMsg}>{error}</p> : null}
+    {error && <p className={errorMsg}>{error}</p>}
   </div>
 )
 

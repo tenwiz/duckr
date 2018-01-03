@@ -8,40 +8,36 @@ const { bool, string, array } = PropTypes
 const User = ({ noUser, isFetching, name, error, duckIds }) => {
   return noUser
     ? <p className={header}>This user doesnt exist. 👽</p>
-    : <div>
-      {
-        isFetching
-          ? <p className={header}>Loading</p>
-          : (
-            <div>
-              <div className={userContainer}>
-                <div>{name}</div>
-              </div>
-              {
-                duckIds.map(id => (
-                  <DuckContainer
-                    key={id}
-                    duckId={id}/>
-                ))
-              }
-              {
-                duckIds.length === 0
-                  ? (
+    : (
+      <div>
+        {
+          isFetching
+            ? <p className={header}>Loading</p>
+            : (
+              <div>
+                <div className={userContainer}>
+                  <div>{name}</div>
+                </div>
+                {
+                  duckIds.map(id => (
+                    <DuckContainer
+                      key={id}
+                      duckId={id}/>
+                  ))
+                }
+                {
+                  duckIds.length === 0 && (
                     <p className={header}>
                       {`It looks like ${name.split(' ')[0]} hasn't made any ducks yet.`}
                     </p>
                   )
-                  : null
-              }
-            </div>
-          )
-      }
-      {
-        error
-          ? <p className={errorMsg}>{error}</p>
-          : null
-      }
+                }
+              </div>
+            )
+        }
+        {error && <p className={errorMsg}>{error}</p>}
       </div>
+    )
 }
 
 User.propTypes = {

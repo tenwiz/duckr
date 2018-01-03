@@ -18,18 +18,18 @@ NewDucksAvailable.propTypes = {
 const Feed = ({ isFetching, newDucksAvailable, resetNewDucksAvailable, duckIds, error }) => (
   isFetching === true
     ? <h1 className={header}>{'Fetching'}</h1>
-    : <div>
-      {newDucksAvailable ? <NewDucksAvailable handleClick={resetNewDucksAvailable} /> : null}
-      {duckIds.length === 0
-        ? <p className={header}>{'This is unfortunate.'} <br /> {'It appears there are no ducks yet 😞'}</p>
-        : null}
-      {duckIds.map((id) => (
-        <DuckContainer
-          duckId={id}
-          key={id} />
-      ))}
-      {error ? <p className={errorMsg}>{error}</p> : null}
-    </div>
+    : (
+      <div>
+        {newDucksAvailable && <NewDucksAvailable handleClick={resetNewDucksAvailable} />}
+        {duckIds.length === 0 && <p className={header}>{'This is unfortunate.'} <br /> {'It appears there are no ducks yet 😞'}</p>}
+        {duckIds.map((id) => (
+          <DuckContainer
+            duckId={id}
+            key={id} />
+        ))}
+        {error && <p className={errorMsg}>{error}</p>}
+      </div>
+    )
 )
 
 Feed.propTypes = {

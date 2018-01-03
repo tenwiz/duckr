@@ -7,22 +7,28 @@ const { bool } = PropTypes
 
 const NavLinks = ({ isAuthed }) => (
   isAuthed === true
-    ? <ul>
-      <li><Link to='/' className={link}>Home</Link></li>
-    </ul>
+    ? (
+      <ul>
+        <li><Link to='/' className={link}>Home</Link></li>
+      </ul>
+    )
     : null
 )
 
 const ActionLinks = ({ isAuthed }) => (
   isAuthed === true
-    ? <ul>
-      <li><ModalContainer /></li>
-      <li><Link to='/logout' className={link}>Logout</Link></li>
-    </ul>
-    : <ul>
-      <li><Link to='/' className={link}>Home</Link></li>
-      <li><Link to='/auth' className={link}>Authenticate</Link></li>
-    </ul>
+    ? (
+      <ul>
+        <li><ModalContainer /></li>
+        <li><Link to='/logout' className={link}>Logout</Link></li>
+      </ul>
+    )
+    : (
+      <ul>
+        <li><Link to='/' className={link}>Home</Link></li>
+        <li><Link to='/auth' className={link}>Authenticate</Link></li>
+      </ul>
+    )
 )
 
 const Navigation = ({ isAuthed }) => (
