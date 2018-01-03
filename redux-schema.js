@@ -1,76 +1,77 @@
-{
+const store = {
   users: {
-    isAuthed,
-    isFetching,
-    error,
-    authedId,
+    isFetching: true,
+    error: '',
+    isAuthed: true,
+    authedId: '',
     [uid]: {
-      lastUpdated,
+      lastUpdated: 0,
       info: {
-        name,
-        uid,
-        avatar,
+        name: '',
+        avatar: '',
+        uid: '',
       }
     }
   },
   modal: {
-    duck,
-    isOpen
+    isOpen: true,
+    duckText: '',
   },
   ducks: {
-    isFetching,
-    error,
+    isFetching: true,
+    error: '',
     [duckId]: {
-      lastUpdated,
-      info: {
-        avatar,
-        duckId,
-        name,
-        text,
-        timestamp,
-        uid,
-      }
+      avatar: '',
+      duckId: '',
+      name: '',
+      text: '',
+      timestamp: 0,
+      uid: '',
     }
-  },
-  likeCount: {
-    [duckId]: 0
   },
   usersDucks: {
-    isFetching,
-    error,
+    isFetching: true,
+    error: '',
     [uid]: {
-      lastUpdated,
-      duckIds: [duckId, duckId, duckId]
+      lastUpdated: 0,
+      duckIds: [],
     }
   },
-  usersLikes: {
-    [duckid]: true,
-  },
   feed: {
-    isFetching,
-    error,
-    newDucksAvailable,
-    duckIdsToAdd: [duckId, duckId],
-    duckIds: [duckId, duckId, duckId]
+    newDucksAvailable: true,
+    newDucksToAdd: [],
+    isFetching: true,
+    error: '',
+    duckIds: [],
+  },
+  listeners: {
+    [listenerId]: true,
+  },
+  usersLikes: {
+    isFetching: true,
+    error: '',
+    [duckId]: true,
+  },
+  likeCount: {
+    isFetching: true,
+    error: '',
+    [duckId]: 0,
   },
   replies: {
-    isFetching,
-    error,
+    isFetching: true,
+    error: '',
     [duckId]: {
-      lastUpdated,
+      lastUpdated: 0,
       replies: {
         [replyId]: {
-          name,
-          reply,
-          uid,
-          timestamp,
-          avatar,
-          replyId
+          avatar: '',
+          name: '',
+          reply: '',
+          replyId: '',
+          timestamp: 0,
+          uid: '',
         }
       }
     }
-  },
-  listeners: {
-    [listenerId]: true
   }
 }

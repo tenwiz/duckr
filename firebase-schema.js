@@ -1,8 +1,42 @@
-/users
-  uid
-    name
-    uid
-    avatar
+const db = {
+  ducks: {
+    [duckId]: {
+      avatar: '',
+      duckId: '',
+      name: '',
+      text: '',
+      timestamp: 0,
+      uid: '',
+    }
+  },
+  likeCount: {
+    [duckId]: 0,
+  },
+  users: {
+    [uid]: {
+      avatar: '',
+      name: '',
+      uid: '',
+    }
+  },
+  usersDucks: {
+    [uid]: {
+      [duckId]: {
+        avatar: '',
+        duckId: '',
+        name: '',
+        text: '',
+        timestamp: 0,
+        uid: ''
+      }
+    }
+  },
+  usersLikes: {
+    [uid]: {
+      [duckId]: true
+    }
+  }
+}
 
 /notifications
   uid
@@ -14,29 +48,6 @@
       duckId
       timestamp
 
-/ducks
-  duckId
-    avatar
-    duckId
-    name
-    text
-    timestamp
-    uid (of duck author)
-
-/likeCount
-  duckId
-    0
-
-/usersDucks
-  uid
-    duckId
-      avatar
-      duckId
-      name
-      text
-      timestamp
-      uid (of duck author)
-
 /replies
   duckId
     replyId
@@ -45,7 +56,3 @@
       uid
       timestamp
       avatar
-
-/usersLikes
-  uid
-    duckId: true

@@ -1,5 +1,6 @@
 import auth, { logout, saveUser } from './../../helpers/auth'
 import { formatUserInfo } from './../../helpers/utils'
+import { fetchUser } from './../../helpers/api'
 
 const AUTH_USER = 'AUTH_USER'
 const UNAUTH_USER = 'UNAUTH_USER'
@@ -46,10 +47,10 @@ export const fetchingUserSuccess = (uid, user, timestamp) => (
 
 export const fetchAndHandleAuthedUser = () => (dispatch) => {
   dispatch(fetchingUser())
-  return auth().then(({ user }) => {
+  auth().then(({ user }) => {
     const userData = user.providerData[0]
     const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)
-    return dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()))
+    dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()))
   })
     .then(({ user }) => saveUser(user))
     .then(user => dispatch(authUser(user.uid)))
@@ -66,6 +67,14 @@ export const removeFetchingUser = () => (
     type: REMOVE_FETCHING_USER,
   }
 )
+
+export const fetchAndHandleUser = (uid) => (dispatch) => {
+  dispatch(fetchingUser())
+
+  fetchUser(uid)
+    .then(user => dispatch(fetchingUserSuccess(uid, user, Date.now())))
+    .catch(error => dispatch(fetchingUserFailure(error)))
+}
 
 const initialUserState = {
   lastUpdated: 0,

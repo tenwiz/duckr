@@ -54,12 +54,13 @@ MainContainer.propTypes = {
   location: object.isRequired,
   history: object.isRequired,
   isFetching: bool.isRequired,
+  setUsersLikes: func.isRequired,
 }
 
 export default withRouter(connect(
   ({users}) => ({isAuthed: users.isAuthed, isFetching: users.isFetching}),
   dispatch => bindActionCreators({
     ...userActionCreators,
-    ...usersLikesActionCreators
+    ...usersLikesActionCreators,
   }, dispatch)
 )(MainContainer))
