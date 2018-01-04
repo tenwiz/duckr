@@ -86,6 +86,6 @@ export const postRelpy = (duckId, reply) => {
 
   return {
     replyWithId,
-    replyPromise
+    replyPromise,
   }
 }

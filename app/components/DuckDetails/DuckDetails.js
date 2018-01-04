@@ -6,7 +6,7 @@ import {
   replyTextAreaContainer, replyTextArea } from './styles.css'
 import { subHeader, darkBtn, errorMsg } from '../../sharedStyles/styles.css'
 import { formatReply } from '../../helpers/utils'
-const { object, string, bool } = PropTypes
+const { object, string, bool, func } = PropTypes
 
 const Reply = ({ submit }) => {
   const handleSubmit = () => {
@@ -21,7 +21,7 @@ const Reply = ({ submit }) => {
         className={replyTextArea}
         ref={ref => Reply.ref = ref}
         maxLength={140}
-        type="text"
+        type='text'
         placeholder='Your response'/>
       <button
         onClick={handleSubmit}
@@ -30,6 +30,10 @@ const Reply = ({ submit }) => {
       </button>
     </div>
   )
+}
+
+Reply.propTypes = {
+  submit: func.isRequired,
 }
 
 const DuckDetails = ({ authedUser, duckId, isFetching, error, addAndHandleReply }) => {
@@ -60,6 +64,7 @@ DuckDetails.propTypes = {
   duckId: string.isRequired,
   isFetching: bool.isRequired,
   error: string.isRequired,
+  addAndHandleReply: func.isRequired,
 }
 
 export default DuckDetails
