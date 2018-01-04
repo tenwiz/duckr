@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import {
   MainContainer, HomeContainer, AuthenticateContainer, FeedContainer,
-  LogoutContainer, UserContainer, DuckDetailsContainer
+  LogoutContainer, UserContainer, DuckDetailsContainer,
 } from './../containers'
 
 const getRoutes = (checkAuth) => (
