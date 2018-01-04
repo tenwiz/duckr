@@ -34,3 +34,13 @@ export const staleDucks = (timestamp) => (
 export const stableUser = (timestamp) => (
   getMilliseconds(timestamp) > userExpirationLength
 )
+
+export const formatReply = ({ name, uid, avatar }, reply) => (
+  {
+    name,
+    reply,
+    uid,
+    timestamp: Date.now(),
+    avatar,
+  }
+)

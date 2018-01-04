@@ -5,9 +5,34 @@ import {
   mainContainer, container, content, repliesContainer,
   replyTextAreaContainer, replyTextArea } from './styles.css'
 import { subHeader, darkBtn, errorMsg } from '../../sharedStyles/styles.css'
+import { formatReply } from '../../helpers/utils'
 const { object, string, bool } = PropTypes
 
-const DuckDetails = ({ authedUser, duckId, isFetching, error }) => {
+const Reply = ({ submit }) => {
+  const handleSubmit = () => {
+    if (Reply.ref.value.length === 0) return
+    submit(Reply.ref.value)
+    Reply.ref.value = 0
+  }
+
+  return (
+    <div className={replyTextAreaContainer}>
+      <textarea
+        className={replyTextArea}
+        ref={ref => Reply.ref = ref}
+        maxLength={140}
+        type="text"
+        placeholder='Your response'/>
+      <button
+        onClick={handleSubmit}
+        className={darkBtn}>
+          Submit
+      </button>
+    </div>
+  )
+}
+
+const DuckDetails = ({ authedUser, duckId, isFetching, error, addAndHandleReply }) => {
   return (
     <div className={mainContainer}>
       {
@@ -17,7 +42,7 @@ const DuckDetails = ({ authedUser, duckId, isFetching, error }) => {
             <div className={container}>
               <div className={content}>
                 <DuckContainer duckId={duckId} hideLikeCount={false} hideReplyBtn={true}/>
-                MAKE REPLY
+                <Reply submit={replyText => addAndHandleReply(duckId, formatReply(authedUser, replyText))}/>
               </div>
               <div className={repliesContainer}>
                 REPLY SECTION
