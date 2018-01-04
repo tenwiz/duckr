@@ -9,9 +9,3 @@ output: {
   publicPath: '/'
 }
 ```
-
-- Place the duckDetail route before the users route, to match first because otherwise an URL like /duckDetail/someId can match the /:uid pattern
-```javascript
-<Route path='/duckDetail/:duckId' component={checkAuth(DuckDetailsContainer)}/>
-<Route path='/:uid' component={checkAuth(UserContainer)}/>
-```

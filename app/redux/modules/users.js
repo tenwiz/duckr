@@ -47,6 +47,7 @@ export const fetchingUserSuccess = (uid, user, timestamp) => (
 
 export const fetchAndHandleAuthedUser = () => (dispatch) => {
   dispatch(fetchingUser())
+
   auth().then(({ user }) => {
     const userData = user.providerData[0]
     const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)

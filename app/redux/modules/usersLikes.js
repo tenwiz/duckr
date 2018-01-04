@@ -77,6 +77,7 @@ export const handleDeleteLike = (duckId, e) => (dispatch, getState) => {
 export const setUsersLikes = () => (dispatch, getState) => {
   const uid = getState().users.authedId
   dispatch(fetchingLikes())
+
   fetchUsersLikes(uid)
     .then(likes => dispatch(fetchingLikesSuccess(likes)))
     .catch(error => dispatch(fetchLikesError(error)))

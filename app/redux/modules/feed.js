@@ -47,9 +47,9 @@ export const setAndHandleFeedListener = () => (dispatch, getState) => {
   if (getState().listeners.feed === true) {
     return
   }
-
   dispatch(addListener('feed'))
   dispatch(settingFeedListener())
+
   listenToFeed(({ feed, sortedIds }) => {
     dispatch(addMultipleDucks(feed))
     initialFetch === true

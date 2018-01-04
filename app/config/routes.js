@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import {
   MainContainer, HomeContainer, AuthenticateContainer, FeedContainer,
-  LogoutContainer, UserContainer,
+  LogoutContainer, UserContainer, DuckDetailsContainer
 } from './../containers'
 
 const getRoutes = (checkAuth) => (
@@ -12,6 +12,7 @@ const getRoutes = (checkAuth) => (
         <Route path='/auth' component={checkAuth(AuthenticateContainer)} />
         <Route path='/feed' component={checkAuth(FeedContainer)} />
         <Route path='/logout' component={LogoutContainer} />
+        <Route path='/duckDetail/:duckId' component={checkAuth(DuckDetailsContainer)} />
         <Route path='/:uid' component={checkAuth(UserContainer)} />
         <Route path='/' component={checkAuth(HomeContainer)} />
       </Switch>
