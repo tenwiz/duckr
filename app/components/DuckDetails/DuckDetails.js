@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { DuckContainer } from '../../containers'
+import { DuckContainer, RepliesContainer } from '../../containers'
 import {
   mainContainer, container, content, repliesContainer,
   replyTextAreaContainer, replyTextArea } from './styles.css'
@@ -49,7 +49,7 @@ const DuckDetails = ({ authedUser, duckId, isFetching, error, addAndHandleReply 
                 <Reply submit={replyText => addAndHandleReply(duckId, formatReply(authedUser, replyText))}/>
               </div>
               <div className={repliesContainer}>
-                REPLY SECTION
+                <RepliesContainer duckId={duckId}/>
               </div>
             </div>
           )

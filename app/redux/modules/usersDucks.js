@@ -21,12 +21,11 @@ const fetchingUsersDucksError = (error) => {
   }
 }
 
-const fetchingUsersDucksSuccess = (uid, duckIds, lastUpdated) => (
+const fetchingUsersDucksSuccess = (uid, duckIds) => (
   {
     type: FETCHING_USERS_DUCKS_SUCCESS,
     uid,
     duckIds,
-    lastUpdated,
   }
 )
 
@@ -64,7 +63,6 @@ export const fetchAndHandleUsersDucks = (uid) => (dispatch) => {
       fetchingUsersDucksSuccess(
         uid,
         Object.keys(ducks).sort((a, b) => ducks[b].timestamp - ducks[a].timestamp),
-        Date.now()
       )
     ))
     .catch(error => dispatch(fetchingUsersDucksError(error)))
@@ -94,7 +92,7 @@ const usersDucks = (state = initialState, action) => {
         isFetching: false,
         error: '',
         [action.uid]: {
-          lastUpdated: action.lastUpdated,
+          lastUpdated: Date.now(),
           duckIds: action.duckIds,
         },
       }

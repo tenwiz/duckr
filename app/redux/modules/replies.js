@@ -1,4 +1,4 @@
-import { postRelpy } from '../../helpers/api'
+import { postRelpy, fetchReplies } from '../../helpers/api'
 
 const FETCHING_REPLIES = 'FETCHING_REPLIES'
 const FETCHING_REPLIES_ERROR = 'FETCHING_REPLIES_ERROR'
@@ -49,7 +49,6 @@ const fetchingRepliesSuccess = (duckId, replies) => {
     type: FETCHING_REPLIES_SUCCESS,
     replies,
     duckId,
-    lastUpdated: Date.now(),
   }
 }
 
@@ -57,6 +56,13 @@ export const addAndHandleReply = (duckId, reply) => (dispatch) => {
   const { replyWithId, replyPromise } = postRelpy(duckId, reply)
   replyPromise.then(() => dispatch(addReply(duckId, replyWithId)))
     .catch(error => dispatch(addReplyError(error)))
+}
+
+export const fetchAndHandleReplies = (duckId) => (dispatch) => {
+  dispatch(fetchingReplies())
+
+  fetchReplies(duckId)
+    .then(replies => dispatch(fetchingRepliesSuccess(duckId, replies)))
 }
 
 const initialReply = {
@@ -95,7 +101,7 @@ const repliesAndLastUpated = (state = initialDuckState, action) => {
     case FETCHING_REPLIES_SUCCESS :
       return {
         ...state,
-        lastUpdated: action.lastUpdated,
+        lastUpdated: Date.now(),
         replies: action.replies,
       }
     case ADD_REPLY :

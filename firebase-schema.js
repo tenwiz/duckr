@@ -12,6 +12,18 @@ const db = {
   likeCount: {
     [duckId]: 0,
   },
+  replies: {
+    [duckId]: {
+      [replyId]: {
+        avatar: '',
+        name: '',
+        reply: '',
+        replyId: '',
+        timestamp: 0,
+        uid: ''
+      }
+    }
+  },
   users: {
     [uid]: {
       avatar: '',
@@ -37,22 +49,3 @@ const db = {
     }
   }
 }
-
-/notifications
-  uid
-    notificationId
-      type
-      author
-      authorAvatar
-      uid (of author)
-      duckId
-      timestamp
-
-/replies
-  duckId
-    replyId
-      name
-      comment
-      uid
-      timestamp
-      avatar

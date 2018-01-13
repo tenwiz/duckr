@@ -36,12 +36,11 @@ const fetchingUserFailure = (error) => {
   }
 }
 
-export const fetchingUserSuccess = (uid, user, timestamp) => (
+export const fetchingUserSuccess = (uid, user) => (
   {
     type: FETCHING_USER_SUCCESS,
     uid,
     user,
-    timestamp,
   }
 )
 
@@ -51,7 +50,7 @@ export const fetchAndHandleAuthedUser = () => (dispatch) => {
   auth().then(({ user }) => {
     const userData = user.providerData[0]
     const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)
-    dispatch(fetchingUserSuccess(user.uid, userInfo, Date.now()))
+    dispatch(fetchingUserSuccess(user.uid, userInfo))
   })
     .then(({ user }) => saveUser(user))
     .then(user => dispatch(authUser(user.uid)))
@@ -73,7 +72,7 @@ export const fetchAndHandleUser = (uid) => (dispatch) => {
   dispatch(fetchingUser())
 
   fetchUser(uid)
-    .then(user => dispatch(fetchingUserSuccess(uid, user, Date.now())))
+    .then(user => dispatch(fetchingUserSuccess(uid, user)))
     .catch(error => dispatch(fetchingUserFailure(error)))
 }
 
@@ -92,7 +91,7 @@ const user = (state = initialUserState, action) => {
       return {
         ...state,
         info: action.user,
-        lastUpdated: action.timestamp,
+        lastUpdated: Date.now(),
       }
     default :
       return state

@@ -21,7 +21,7 @@ class MainContainer extends Component {
         const userInfo = formatUserInfo(userData.displayName, userData.photoURL, user.uid)
         authUser(user.uid)
         setUsersLikes()
-        fetchingUserSuccess(user.uid, userInfo, Date.now())
+        fetchingUserSuccess(user.uid, userInfo)
         if (location.pathname === '/') {
           history.replace('/feed')
         }
