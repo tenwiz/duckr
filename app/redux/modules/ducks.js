@@ -1,6 +1,7 @@
 import { saveDuck, fetchDuck } from '../../helpers/api'
 import { closeModal } from './modal'
 import { addSingleUsersDuck } from './usersDucks'
+import { Map, fromJS } from 'immutable'
 
 const FETCHING_DUCK = 'FETCHING_DUCK'
 const FETCHING_DUCK_ERROR = 'FETCHING_DUCK_ERROR'
@@ -71,43 +72,36 @@ export const fetchAndHandleDuck = (duckId) => (dispatch) => {
     .catch(error => dispatch(fetchingDuckError(error)))
 }
 
-const initialState = {
+const initialState = Map({
   isFetching: true,
   error: '',
-}
+})
 
 const ducks = (state = initialState, action) => {
   switch (action.type) {
     case FETCHING_DUCK :
-      return {
-        ...state,
+      return state.merge({
         isFetching: true,
-      }
+      })
     case ADD_DUCK :
     case FETCHING_DUCK_SUCCESS :
-      return {
-        ...state,
+      return state.merge({
         error: '',
         isFetching: false,
         [action.duck.duckId]: action.duck,
-      }
+      })
     case FETCHING_DUCK_ERROR :
-      return {
-        ...state,
+      return state.merge({
         isFetching: false,
         error: action.error,
-      }
+      })
     case REMOVE_FETCHING :
-      return {
-        ...state,
+      return state.merge({
         error: '',
         isFetching: false,
-      }
+      })
     case ADD_MULTIPLE_DUCKS :
-      return {
-        ...state,
-        ...action.ducks,
-      }
+      return state.merge(action.ducks)
     default :
       return state
   }

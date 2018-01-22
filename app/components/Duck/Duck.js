@@ -7,7 +7,8 @@ import {
   duckContainer, contentContainer, avatar, actionContainer,
   header, text, likeReplyContainer, icon, likedIcon, author,
 } from './styles.css'
-const { shape, func, string, bool, number } = PropTypes
+import { Map } from 'immutable'
+const { instanceOf, func, string, bool, number } = PropTypes
 
 const Duck = ({ isLiked, handleDeleteLike, addAndHandleLike, hideReplyBtn,
                 onClick, duck, goToProfile, hideLikeCount, numberOfLikes }) => {
@@ -19,13 +20,13 @@ const Duck = ({ isLiked, handleDeleteLike, addAndHandleLike, hideReplyBtn,
       className={duckContainer}
       style={{cursor: hideReplyBtn === true ? 'default' : 'pointer'}}
       onClick={onClick}>
-        <img src={duck.avatar} className={avatar}/>
+        <img src={duck.get('avatar')} className={avatar}/>
         <div className={contentContainer}>
           <div className={header}>
-            <div onClick={goToProfile} className={author}>{duck.name}</div>
-            <div>{formatTimestamp(duck.timestamp)}</div>
+            <div onClick={goToProfile} className={author}>{duck.get('name')}</div>
+            <div>{formatTimestamp(duck.get('timestamp'))}</div>
           </div>
-          <div className={text}>{duck.text}</div>
+          <div className={text}>{duck.get('text')}</div>
           <div className={likeReplyContainer}>
             {
               hideReplyBtn === true
@@ -33,7 +34,7 @@ const Duck = ({ isLiked, handleDeleteLike, addAndHandleLike, hideReplyBtn,
                 : <Reply className={icon}/>
             }
             <div className={actionContainer}>
-              <Star className={starIcon} onClick={e => starFn(duck.duckId, e)}/>
+              <Star className={starIcon} onClick={e => starFn(duck.get('duckId'), e)}/>
               {
                 hideLikeCount === true
                   ? null
@@ -47,14 +48,7 @@ const Duck = ({ isLiked, handleDeleteLike, addAndHandleLike, hideReplyBtn,
 }
 
 Duck.propTypes = {
-  duck: shape({
-    avatar: string.isRequired,
-    duckId: string.isRequired,
-    name: string.isRequired,
-    text: string.isRequired,
-    timestamp: number.isRequired,
-    uid: string.isRequired,
-  }),
+  duck: instanceOf(Map),
   onClick: func,
   isLiked: bool.isRequired,
   addAndHandleLike: func.isRequired,

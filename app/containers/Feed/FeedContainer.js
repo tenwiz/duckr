@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import { Feed } from './../../components'
 import { bindActionCreators } from 'redux'
 import * as feedActionCreators from '../../redux/modules/feed'
-const { array, string, func, bool } = PropTypes
+import { List } from 'immutable'
+const { instanceOf, string, func, bool } = PropTypes
 
 class FeedContainer extends Component {
   componentDidMount () {
@@ -26,7 +27,7 @@ class FeedContainer extends Component {
 }
 
 FeedContainer.propTypes = {
-  duckIds: array.isRequired,
+  duckIds: instanceOf(List),
   newDucksAvailable: bool.isRequired,
   error: string.isRequired,
   isFetching: bool.isRequired,
@@ -34,15 +35,14 @@ FeedContainer.propTypes = {
   resetNewDucksAvailable: func.isRequired,
 }
 
-const mapStateToProps = ({ feed }) => {
-  const { newDucksAvailable, error, isFetching, duckIds } = feed
-  return {
-    newDucksAvailable,
-    error,
-    isFetching,
-    duckIds,
+const mapStateToProps = ({ feed }) => (
+  {
+    newDucksAvailable: feed.get('newDucksAvailable'),
+    error: feed.get('error'),
+    isFetching: feed.get('isFetching'),
+    duckIds: feed.get('duckIds'),
   }
-}
+)
 
 export default connect(
   mapStateToProps,

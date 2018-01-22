@@ -43,11 +43,11 @@ DuckDetailsContainer.propTypes = {
 const mapStateToProps = ({ ducks, likeCount, users }, props) => {
   const duckId = props.match.params.duckId
   return {
-    isFetching: ducks.isFetching || likeCount.isFetching,
-    error: ducks.error,
+    isFetching: ducks.get('isFetching') || likeCount.isFetching,
+    error: ducks.get('error'),
     authedUser: users[users.authedId].info,
     duckId,
-    duckAlreadyFetched: !!ducks[duckId],
+    duckAlreadyFetched: !!ducks.get(duckId),
   }
 }
 

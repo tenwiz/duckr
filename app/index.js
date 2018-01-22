@@ -7,7 +7,7 @@ import { Provider } from 'react-redux'
 import restricted from './helpers/restricted'
 import * as reducers from './redux/modules'
 import createHistory from 'history/createBrowserHistory'
-import { routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { routerReducer, routerMiddleware } from 'react-router-redux'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -22,7 +22,7 @@ const middleware = [thunk, routerMiddleware(history)]
 const store = createStore(
   combineReducers({
     ...reducers,
-    router: routerReducer
+    router: routerReducer,
   }),
   composeEnhancers(
     applyMiddleware(...middleware)

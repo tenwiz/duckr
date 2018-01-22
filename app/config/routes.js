@@ -1,10 +1,10 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import {
   MainContainer, HomeContainer, AuthenticateContainer, FeedContainer,
   LogoutContainer, UserContainer, DuckDetailsContainer,
 } from './../containers'
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { ConnectedRouter } from 'react-router-redux'
 
 const getRoutes = (checkAuth, history) => (
   <ConnectedRouter history={history}>

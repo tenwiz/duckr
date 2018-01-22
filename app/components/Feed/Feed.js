@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { newDuckContainer, header } from './styles.css'
 import { DuckContainer } from '../../containers'
 import { errorMsg } from '../../sharedStyles/styles.css'
-const { func, string, bool, array } = PropTypes
+import { List } from 'immutable'
+const { instanceOf, func, string, bool } = PropTypes
 
 const NewDucksAvailable = ({handleClick}) => (
   <div className={newDuckContainer} onClick={handleClick}>
@@ -21,19 +22,15 @@ const Feed = ({ isFetching, newDucksAvailable, resetNewDucksAvailable, duckIds, 
     : (
       <div>
         {newDucksAvailable && <NewDucksAvailable handleClick={resetNewDucksAvailable} />}
-        {duckIds.length === 0 && <p className={header}>{'This is unfortunate.'} <br /> {'It appears there are no ducks yet 😞'}</p>}
-        {duckIds.map((id) => (
-          <DuckContainer
-            duckId={id}
-            key={id} />
-        ))}
+        {duckIds.size === 0 && <p className={header}>{'This is unfortunate.'} <br /> {'It appears there are no ducks yet 😞'}</p>}
+        {duckIds.map((id) => <DuckContainer duckId={id} key={id} />)}
         {error && <p className={errorMsg}>{error}</p>}
       </div>
     )
 )
 
 Feed.propTypes = {
-  duckIds: array.isRequired,
+  duckIds: instanceOf(List),
   error: string.isRequired,
   isFetching: bool.isRequired,
   newDucksAvailable: bool.isRequired,
