@@ -4,20 +4,22 @@ import {
   MainContainer, HomeContainer, AuthenticateContainer, FeedContainer,
   LogoutContainer, UserContainer, DuckDetailsContainer,
 } from './../containers'
+import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
 
-const getRoutes = (checkAuth) => (
-  <Router>
+const getRoutes = (checkAuth, history) => (
+  <ConnectedRouter history={history}>
+    { /* ConnectedRouter will use the store from Provider automatically */ }
     <MainContainer>
       <Switch>
+        <Route exact={true} path='/' component={checkAuth(HomeContainer)} />
         <Route path='/auth' component={checkAuth(AuthenticateContainer)} />
         <Route path='/feed' component={checkAuth(FeedContainer)} />
-        <Route path='/logout' component={LogoutContainer} />
         <Route path='/duckDetail/:duckId' component={checkAuth(DuckDetailsContainer)} />
         <Route path='/:uid' component={checkAuth(UserContainer)} />
-        <Route exact={true} path='/' component={checkAuth(HomeContainer)} />
+        <Route path='/logout' component={LogoutContainer} />
       </Switch>
     </MainContainer>
-  </Router>
+  </ConnectedRouter>
 )
 
 export default getRoutes
