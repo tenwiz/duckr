@@ -47,6 +47,7 @@ const base = {
 const developmentConfig = {
   devtool: 'cheap-module-inline-source-map',
   devServer: {
+    historyApiFallback: true,
     contentBase: PATHS.build,
     hot: true,
   },

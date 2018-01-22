@@ -12,7 +12,7 @@ class DuckDetailsContainer extends Component {
   componentDidMount() {
     const { initLikeFetch, duckId, duckAlreadyFetched, fetchAndHandleDuck, removeFetching } = this.props
     initLikeFetch(duckId)
-    duckAlreadyFetched ? fetchAndHandleDuck(duckId) : removeFetching()
+    duckAlreadyFetched ? removeFetching() : fetchAndHandleDuck(duckId)
   }
 
   render() {

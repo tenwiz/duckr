@@ -12,7 +12,7 @@ const Reply = ({ submit }) => {
   const handleSubmit = () => {
     if (Reply.ref.value.length === 0) return
     submit(Reply.ref.value)
-    Reply.ref.value = 0
+    Reply.ref.value = ''
   }
 
   return (
