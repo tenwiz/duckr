@@ -1,14 +1,14 @@
 Arguments: 
-  /usr/local/Cellar/node/8.7.0/bin/node /usr/local/Cellar/yarn/1.2.1/libexec/bin/yarn.js add redux-thunk
+  /usr/local/Cellar/node/9.4.0/bin/node /usr/local/Cellar/yarn/1.3.2/libexec/bin/yarn.js install
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/lihuayang/Library/Android/sdk/tools:/Users/lihuayang/Library/Android/sdk/platform-tools
+  /usr/local/texlive/2016basic/bin/x86_64-darwin:/Users/martian/anaconda/bin:/Users/martian/anaconda/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Users/martian/anaconda/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/Users/martian/anaconda/bin:/Users/martian/anaconda/bin:/Users/martian/anaconda/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/TeX/texbin:/opt/Ghostscript/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/opt/ImageMagick/bin:/Applications/Wireshark.app/Contents/MacOS:/Users/martian/Library/Android/sdk/tools:/Users/martian/Library/Android/sdk/platform-tools
 
 Yarn version: 
-  1.2.1
+  1.3.2
 
 Node version: 
-  8.7.0
+  9.4.0
 
 Platform: 
   darwin x64
@@ -37,11 +37,16 @@ npm manifest:
     },
     "homepage": "https://github.com/Martian2Lee/Duckr#readme",
     "dependencies": {
+      "firebase": "^4.6.2",
+      "npm": "^5.6.0",
       "react": "^16.0.0",
       "react-dom": "^16.0.0",
+      "react-icons": "^2.2.7",
+      "react-modal": "^3.1.6",
       "react-redux": "^5.0.6",
       "react-router-dom": "^4.2.2",
-      "redux": "^3.7.2"
+      "redux": "^3.7.2",
+      "redux-thunk": "^2.2.0"
     },
     "devDependencies": {
       "babel-core": "^6.26.0",
@@ -5523,13 +5528,13 @@ Lockfile:
 
 Trace: 
   Error: https://registry.yarnpkg.com/asn1.js/-/asn1.js-4.10.0.tgz: Request failed "404 Not Found"
-      at Request.<anonymous> (/usr/local/Cellar/yarn/1.2.1/libexec/lib/cli.js:59296:26)
-      at emitOne (events.js:115:13)
-      at Request.emit (events.js:210:7)
-      at Request.module.exports.Request.onRequestResponse (/usr/local/Cellar/yarn/1.2.1/libexec/lib/cli.js:123897:10)
-      at emitOne (events.js:115:13)
-      at ClientRequest.emit (events.js:210:7)
-      at HTTPParser.parserOnIncomingClient (_http_client.js:549:21)
-      at HTTPParser.parserOnHeadersComplete (_http_common.js:116:23)
-      at TLSSocket.socketOnData (_http_client.js:438:20)
-      at emitOne (events.js:115:13)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:59356:26)
+      at Request.emit (events.js:160:13)
+      at Request.module.exports.Request.onRequestResponse (/usr/local/Cellar/yarn/1.3.2/libexec/lib/cli.js:123971:10)
+      at ClientRequest.emit (events.js:160:13)
+      at HTTPParser.parserOnIncomingClient (_http_client.js:548:21)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:115:23)
+      at TLSSocket.socketOnData (_http_client.js:439:20)
+      at TLSSocket.emit (events.js:160:13)
+      at addChunk (_stream_readable.js:269:12)
+      at readableAddChunk (_stream_readable.js:256:11)

@@ -16,7 +16,7 @@ NewDucksAvailable.propTypes = {
 }
 
 const Feed = ({ isFetching, newDucksAvailable, resetNewDucksAvailable, duckIds, error }) => (
-  isFetching === true
+  isFetching
     ? <h1 className={header}>{'Fetching'}</h1>
     : (
       <div>

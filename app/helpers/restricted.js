@@ -17,7 +17,7 @@ export default (BaseComponent, store) => {
     }
 
     checkAuthentication = ({ history }) => {
-      if (store.getState().users.isFetching === true) {
+      if (store.getState().users.isFetching) {
         return
       }
 

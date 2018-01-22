@@ -34,7 +34,7 @@ class MainContainer extends Component {
   render () {
     const { isAuthed, children, isFetching } = this.props
 
-    return isFetching === true
+    return isFetching
       ? null
       : (
         <div className={container}>

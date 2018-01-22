@@ -63,6 +63,7 @@ export const fetchAndHandleReplies = (duckId) => (dispatch) => {
 
   fetchReplies(duckId)
     .then(replies => dispatch(fetchingRepliesSuccess(duckId, replies)))
+    .catch(error => dispatch(fetchingRepliesError(error)))
 }
 
 const initialReply = {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 import { Replies } from '../../components'
-import { staleReply } from '../../helpers/utils'
+import { staleReplies } from '../../helpers/utils'
 import * as repliesActionCreators from '../../redux/modules/replies'
 const { func, string, bool, number, object } = PropTypes
 
@@ -16,7 +16,7 @@ class RepliesContainer extends Component {
   componentDidMount() {
     const { lastUpdated, fetchAndHandleReplies, duckId } = this.props
 
-    if (staleReply(lastUpdated)) {
+    if (staleReplies(lastUpdated)) {
       fetchAndHandleReplies(duckId)
     }
   }
@@ -43,12 +43,12 @@ RepliesContainer.propTypes = {
   fetchAndHandleReplies: func.isRequired,
 }
 
-const mapStateToProps = ({ replies }, props) => {
-  const duckRepliesInfo = replies[props.duckId] || {}
+const mapStateToProps = (state, props) => {
+  const duckRepliesInfo = state.replies[props.duckId] || {}
   const { lastUpdated, replies } = duckRepliesInfo
   return {
-    isFetching: replies.isFetching,
-    error: replies.error,
+    isFetching: state.replies.isFetching,
+    error: state.replies.error,
     lastUpdated,
     replies,
   }

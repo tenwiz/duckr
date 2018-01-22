@@ -5,7 +5,7 @@ const { func, bool } = PropTypes
 
 const FacebookAuthButton = ({ onAuth, isFetching }) => (
   <button onClick={onAuth} className={button} >
-    {isFetching === true
+    {isFetching
       ? 'Loading'
       : 'Login with facebook'}
   </button>

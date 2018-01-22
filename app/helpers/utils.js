@@ -35,7 +35,7 @@ export const stableUser = (timestamp) => (
   getMilliseconds(timestamp) > userExpirationLength
 )
 
-export const staleReply = (timestamp) => (
+export const staleReplies = (timestamp) => (
   getMilliseconds(timestamp) > repliesExpirationLength
 )
 
