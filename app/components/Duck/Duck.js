@@ -8,7 +8,7 @@ import {
   header, text, likeReplyContainer, icon, likedIcon, author,
 } from './styles.css'
 import { Map } from 'immutable'
-const { instanceOf, func, string, bool, number } = PropTypes
+const { instanceOf, func, bool, number } = PropTypes
 
 const Duck = ({ isLiked, handleDeleteLike, addAndHandleLike, hideReplyBtn,
                 onClick, duck, goToProfile, hideLikeCount, numberOfLikes }) => {

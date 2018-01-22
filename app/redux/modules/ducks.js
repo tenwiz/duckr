@@ -1,7 +1,7 @@
 import { saveDuck, fetchDuck } from '../../helpers/api'
 import { closeModal } from './modal'
 import { addSingleUsersDuck } from './usersDucks'
-import { Map, fromJS } from 'immutable'
+import { Map } from 'immutable'
 
 const FETCHING_DUCK = 'FETCHING_DUCK'
 const FETCHING_DUCK_ERROR = 'FETCHING_DUCK_ERROR'
