@@ -14,7 +14,7 @@ const getRoutes = (checkAuth) => (
         <Route path='/logout' component={LogoutContainer} />
         <Route path='/duckDetail/:duckId' component={checkAuth(DuckDetailsContainer)} />
         <Route path='/:uid' component={checkAuth(UserContainer)} />
-        <Route path='/' component={checkAuth(HomeContainer)} />
+        <Route exact={true} path='/' component={checkAuth(HomeContainer)} />
       </Switch>
     </MainContainer>
   </Router>
