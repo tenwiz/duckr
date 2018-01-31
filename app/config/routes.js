@@ -15,8 +15,8 @@ const getRoutes = (checkAuth, history) => (
         <Route path='/auth' component={checkAuth(AuthenticateContainer)} />
         <Route path='/feed' component={checkAuth(FeedContainer)} />
         <Route path='/duckDetail/:duckId' component={checkAuth(DuckDetailsContainer)} />
-        <Route path='/:uid' component={checkAuth(UserContainer)} />
         <Route path='/logout' component={LogoutContainer} />
+        <Route path='/:uid' component={checkAuth(UserContainer)} />
       </Switch>
     </MainContainer>
   </ConnectedRouter>
